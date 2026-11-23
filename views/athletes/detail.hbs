@@ -1,0 +1,44 @@
+{{!--
+  Fiche d'un athlète (F8) avec son sport, et les boutons modifier / supprimer / à la une.
+  Données attendues : athlete = { id, nom, prenom, nationalite, dateNaissance, poste,
+  biographie, fiabilite, officiel, aLaUne, sportId, sportNom }
+--}}
+<article class="fiche-athlete">
+  <h1>{{athlete.prenom}} {{athlete.nom}}</h1>
+
+  {{!-- Badges : fiabilité, fiche officielle, à la une --}}
+  <p>
+    <span class="badge badge-{{athlete.fiabilite}}">{{athlete.fiabilite}}</span>
+    {{#if athlete.officiel}}<span class="badge badge-officiel">Officiel</span>{{/if}}
+    {{#if athlete.aLaUne}}<span class="badge badge-une">À la une</span>{{/if}}
+  </p>
+
+  <ul class="infos">
+    {{!-- N2 : le sport est cliquable --}}
+    <li><strong>Sport :</strong> <a href="/sports/{{athlete.sportId}}">{{athlete.sportNom}}</a></li>
+    <li><strong>Poste / spécialité :</strong> {{athlete.poste}}</li>
+    <li><strong>Nationalité :</strong> {{athlete.nationalite}}</li>
+    <li><strong>Date de naissance :</strong> {{athlete.dateNaissance}}</li>
+  </ul>
+
+  <h2>Biographie</h2>
+  <p>{{athlete.biographie}}</p>
+
+  <div class="actions">
+    {{!-- Modifier : simple lien vers le formulaire (GET) --}}
+    <a href="/athletes/{{athlete.id}}/modifier" class="bouton">Modifier</a>
+
+    {{!-- À la une (F14) : un formulaire, car un lien ne peut faire qu'un GET --}}
+    <form method="POST" action="/athletes/{{athlete.id}}/une">
+      <button type="submit">
+        {{#if athlete.aLaUne}}Retirer de la une{{else}}Mettre à la une{{/if}}
+      </button>
+    </form>
+
+    {{!-- Supprimer (F10) : demande une confirmation avant d'envoyer --}}
+    <form method="POST" action="/athletes/{{athlete.id}}/supprimer"
+          onsubmit="return confirm('Supprimer cet athlète ?');">
+      <button type="submit" class="bouton-danger">Supprimer</button>
+    </form>
+  </div>
+</article>
