@@ -1,1 +1,13 @@
-{{!-- Liste des tags triée par nom. Responsable : Shahine. --}}
+<h1>Tags</h1>
+<p>Les tags servent de filtres fixes pour classer les pages.</p>
+
+<div class="grille" style="margin-top: 2rem;">
+  {{#each tags}}
+    <article class="carte">
+      <a href="/tags/{{this.id}}" class="carte-lien">
+        <h3 class="carte-titre">{{this.nom}}</h3>
+        <p class="carte-resume">{{this.description}}</p>
+      </a>
+    </article>
+  {{/each}}
+</div>

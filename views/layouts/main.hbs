@@ -1,1 +1,15 @@
-{{!-- Squelette HTML commun (head, nav, footer) (N1). Responsable : Shahine. --}}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>{{#if titre}}{{titre}} — {{/if}}Sport"heub"</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  {{> nav}}
+  <main class="container">
+    {{{body}}}
+  </main>
+  <footer class="footer"><p>Sport"heub" — Projet R1.02</p></footer>
+</body>
+</html>

@@ -1,1 +1,10 @@
-{{!-- Carte d'un athlète dans les listes (N2). Responsable : Shahine. --}}
+<article class="carte">
+  <a href="/athletes/{{athlete.id}}" class="carte-lien">
+    <h3 class="carte-titre">{{athlete.prenom}} {{athlete.nom}}</h3>
+    <p class="carte-meta">{{athlete.nationalite}} · {{athlete.poste}}</p>
+    <div class="carte-badges">
+      {{> badge-fiabilite fiabilite=athlete.fiabilite}}
+      {{> badge-officielle officielle=athlete.officiel}}
+    </div>
+  </a>
+</article>

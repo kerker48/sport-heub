@@ -1,1 +1,17 @@
-{{!-- Un tag et ses pages (F12 côté tag). Responsable : Shahine. --}}
+<section style="margin-bottom: 2rem;">
+  <a href="/tags">← Tous les tags</a>
+  <h1>{{tag.nom}}</h1>
+  <p>{{tag.description}}</p>
+</section>
+
+<h2>Pages avec ce tag ({{pages.length}})</h2>
+
+{{#if pages.length}}
+  <div class="grille" style="margin-top: 1rem;">
+    {{#each pages}}
+      {{> carte-page page=this}}
+    {{/each}}
+  </div>
+{{else}}
+  <p>Aucune page n'utilise ce tag.</p>
+{{/if}}

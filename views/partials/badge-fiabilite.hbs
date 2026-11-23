@@ -1,1 +1,7 @@
-{{!-- Badge de fiabilité : vérifié / non vérifié / fake. Responsable : Shahine. --}}
+{{#if (eq fiabilite "verifie")}}
+  <span class="badge badge-verifie">✔ Vérifié</span>
+{{else if (eq fiabilite "non_verifie")}}
+  <span class="badge badge-non-verifie">? Non vérifié</span>
+{{else if (eq fiabilite "fake")}}
+  <span class="badge badge-fake">⚠ Fake</span>
+{{/if}}

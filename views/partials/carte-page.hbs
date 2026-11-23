@@ -1,1 +1,10 @@
-{{!-- Carte d'une page dans les listes (N2). Responsable : Shahine. --}}
+<article class="carte">
+  <a href="/pages/{{page.id}}" class="carte-lien">
+    <h3 class="carte-titre">{{page.titre}}</h3>
+    <p class="carte-resume">{{page.resume}}</p>
+    <div class="carte-badges">
+      {{> badge-fiabilite fiabilite=page.fiabilite}}
+      {{> badge-officielle officielle=page.officielle}}
+    </div>
+  </a>
+</article>

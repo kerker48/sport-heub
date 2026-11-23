@@ -1,1 +1,30 @@
-{{!-- Accueil : blocs « Pages à la une » et « Athlètes à la une » (F13). Responsable : Shahine. --}}
+<section class="accueil-hero" style="text-align: center; margin-bottom: 3rem;">
+  <h1>Bienvenue sur Sport"heub"</h1>
+  <p>Le wiki sportif collaboratif et anarchique.</p>
+</section>
+
+<section class="section-une" style="margin-bottom: 3rem;">
+  <h2>📄 Pages à la une</h2>
+  {{#if pagesUne.length}}
+    <div class="grille">
+      {{#each pagesUne}}
+        {{> carte-page page=this}}
+      {{/each}}
+    </div>
+  {{else}}
+    <p>Aucune page à la une.</p>
+  {{/if}}
+</section>
+
+<section class="section-une">
+  <h2>🏅 Athlètes à la une</h2>
+  {{#if athletesUne.length}}
+    <div class="grille">
+      {{#each athletesUne}}
+        {{> carte-athlete athlete=this}}
+      {{/each}}
+    </div>
+  {{else}}
+    <p>Aucun athlète à la une.</p>
+  {{/if}}
+</section>
