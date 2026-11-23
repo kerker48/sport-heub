@@ -1,0 +1,6 @@
+# Dépendances : réinstallées avec npm install
+node_modules/
+
+# Base de données : créée par npm run setup, jamais commitée
+*.db
+*.db-journal
