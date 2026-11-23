@@ -1,0 +1,37 @@
+{{!-- Formulaire partagé : création (athlete vide) et modification (athlete prérempli) --}}
+<h1>{{#if athlete.id}}Modifier {{athlete.prenom}} {{athlete.nom}}{{else}}Nouvel athlète{{/if}}</h1>
+
+{{!-- Liste des erreurs de validation, s'il y en a --}}
+{{#if erreurs}}
+  <ul class="erreurs">{{#each erreurs}}<li>{{this}}</li>{{/each}}</ul>
+{{/if}}
+
+<form method="POST" action="{{#if athlete.id}}/athletes/{{athlete.id}}/modifier{{else}}/athletes{{/if}}">
+  <label>Nom <input name="nom" value="{{athlete.nom}}" required></label>
+  <label>Prénom <input name="prenom" value="{{athlete.prenom}}" required></label>
+  <label>Nationalité <input name="nationalite" value="{{athlete.nationalite}}" required></label>
+  <label>Date de naissance <input type="date" name="dateNaissance" value="{{athlete.dateNaissance}}" required></label>
+  <label>Poste / spécialité <input name="poste" value="{{athlete.poste}}" required></label>
+  <label>Biographie <textarea name="biographie" required>{{athlete.biographie}}</textarea></label>
+
+  <label>Sport
+    <select name="sportId" required>
+      {{#each sports}}
+        {{!-- "../" remonte d'un niveau pour accéder à athlete depuis la boucle --}}
+        <option value="{{id}}" {{#if (eq id ../athlete.sportId)}}selected{{/if}}>{{nom}}</option>
+      {{/each}}
+    </select>
+  </label>
+
+  <label>Fiabilité
+    <select name="fiabilite">
+      <option value="verifie" {{#if (eq athlete.fiabilite "verifie")}}selected{{/if}}>Vérifié</option>
+      <option value="non_verifie" {{#if (eq athlete.fiabilite "non_verifie")}}selected{{/if}}>Non vérifié</option>
+      <option value="fake" {{#if (eq athlete.fiabilite "fake")}}selected{{/if}}>Fake / parodie</option>
+    </select>
+  </label>
+
+  <label><input type="checkbox" name="aLaUne" {{#if athlete.aLaUne}}checked{{/if}}> À la une</label>
+
+  <button type="submit">Enregistrer</button>
+</form>

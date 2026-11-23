@@ -1,0 +1,25 @@
+{{!--
+  Liste de tous les athlètes (F7).
+  Données attendues : athletes = tableau trié par nom puis prénom,
+  chaque athlète contient : id, nom, prenom, poste, fiabilite, sportId, sportNom
+--}}
+<h1>Athlètes</h1>
+
+<a href="/athletes/nouveau" class="bouton">+ Ajouter un athlète</a>
+
+{{#if athletes.length}}
+  <ul class="liste-athletes">
+    {{#each athletes}}
+      <li>
+        {{!-- N2 : le nom mène à la fiche de l'athlète --}}
+        <a href="/athletes/{{id}}">{{nom}} {{prenom}}</a>
+        — {{poste}}
+        {{!-- N2 : le sport mène à la page du sport --}}
+        (<a href="/sports/{{sportId}}">{{sportNom}}</a>)
+        <span class="badge badge-{{fiabilite}}">{{fiabilite}}</span>
+      </li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p>Aucun athlète pour le moment.</p>
+{{/if}}
